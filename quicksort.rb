@@ -4,15 +4,8 @@ def quick(a)
     a
   else
     point = a[0]
-    pre = []
-    nex = []
-    a[1..-1].each do |s|
-      if s > point
-        nex << s
-      else
-        pre << s
-      end
-    end
+    pre = a[1..-1].select{|s| s < point}
+    nex = a[1..-1].select{|s| s > point}
     quick(pre) + [point] + quick(nex)
   end
 end
